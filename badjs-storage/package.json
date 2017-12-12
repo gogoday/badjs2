@@ -1,0 +1,31 @@
+{
+  "name": "badjs-storage",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "connect": "^2.30.2",
+    "map-stream": "^0.1.0",
+    "axon": "^2.0.0",
+    "log4js": "^0.6.2",
+    "mongodb": "^2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-jscs": "^1.1.2",
+    "gulp-mocha": "^1.0.0"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BetterJS/badjs-storage.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BetterJS/badjs-storage/issues"
+  },
+  "homepage": "https://github.com/BetterJS/badjs-storage"
+}

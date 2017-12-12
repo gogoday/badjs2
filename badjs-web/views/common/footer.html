@@ -1,0 +1,12 @@
+<script src="/static/common.js"></script>
+
+<script>
+function check_upgrade(isold, newversion) {
+    if (isold === 1) {
+        document.getElementById('new-version').innerText = newversion;
+        document.getElementById('upgrade-tip').style.display = '';
+    }
+}
+</script>
+<script src="https://iv-web.github.io/badjs_check_upgrade.js"></script>
+

@@ -1,0 +1,161 @@
+<%
+var urls;
+var not_show_source_page = true;
+try {
+    not_show_source_page = !!localStorage.not_show_source_page;
+} catch (ex) {}
+
+// 手Q
+var RE_MQQ = /(ipad|iphone|ipod).*? (ipad)?qq\/([\d.]+)|\bv1_and_sqi?_([\d.]+)(.*? qq\/([\d.]+))?/;
+
+function getBrowserType(ua) {
+    if (!ua) {
+        return '';
+    }
+    ua = ua.toLowerCase();
+
+    var osIcon = '', browserIcon = '';
+
+    // os
+    if (ua.indexOf('android') > -1)
+        osIcon = 'ico-android';
+    else if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1)
+        osIcon = 'ico-ios';
+    else if (ua.indexOf('windows') > -1)
+        osIcon = 'ico-windows';
+
+
+    // 手Q
+    if (RE_MQQ.test(ua)) {
+        browserIcon = 'ico-qq';
+    } else if (ua.indexOf('qqbrowser') > -1) {
+        browserIcon = 'ico-qb';
+    } else if (ua.indexOf('metasr') > -1) {
+        browserIcon = 'ico-sougou';
+    } else if (ua.indexOf('maxthon') > -1) {
+        browserIcon = 'ico-maxthon';
+    } else if (ua.indexOf('360se') > -1) {
+        browserIcon = 'ico-360';
+    } else if (ua.indexOf('qq/') > -1) {
+        browserIcon = 'ico-qq';
+    } else if (ua.indexOf('micromessenger') > -1) {
+        browserIcon = 'ico-wx';
+    } else if (ua.indexOf('edge') > -1) {
+        browserIcon = 'ico-edge';
+    } else if (ua.indexOf('chrome') > -1) {
+        browserIcon = 'ico-chrome';
+    } else if (ua.indexOf('msie') > -1 || ua.indexOf('trident') > -1) {
+        browserIcon = 'ico-ie';
+    } else if (ua.indexOf('firefox') > -1) {
+        browserIcon = 'ico-ff';
+    } else if (ua.indexOf('safari') > -1) {
+        browserIcon = 'ico-safari';
+    }
+
+    return [osIcon, browserIcon];
+}
+
+function sourcePage(data, type, opt) {
+    var from = data.from || ''
+    if (/view/.test(type)) {
+        var view = ['页面查看', opt.encodeHtml(from)];
+        return 'viewtext' === type ? view[0] :
+            'viewlink' === type ? view[1] :
+            not_show_source_page ? view[0] : view[1];
+    } else {
+        var href = opt.encodeHtml(from);
+        var msg = [data._target, data.rowNum, data.colNum].join(':') + ' ' + data.msg;
+        if (href.indexOf('#') === -1) {
+            href += '#BJ_ERROR=' + encodeURIComponent(msg);
+        } else {
+            href += '&BJ_ERROR=' + encodeURIComponent(msg);
+        }
+        return href;
+    }
+}
+
+for (var i = 0 , l = it.length, type = ''; i < l; i++) {
+    switch(it[i].level.toString()) {
+        case '8':
+            type = 'warning';
+            break;
+        case '4':
+            type = 'err';
+            break;
+        case '2':
+            type = 'info';
+            break;
+        case '1':
+            type = 'debug';
+            break;
+        case '20':
+            type = 'offline';
+            break;
+    }
+
+    if (_.isArray(it[i].target)) {
+        it[i].target = it[i].target[0];
+    }
+
+    var isHtml = /^.+?\.html\??/.test(it[i].target);
+    var _target = it[i]._target = (it[i].target || it[i].url || '').replace(/\)/g, '');
+%>
+<tr id="tr-<%=i + 1 + opt.startIndex%>">
+    <td  class="td-1 active info-type-<%=type%>" data-event-click="alertModal" title="点击查看#<%=i + 1 + opt.startIndex%>详情">
+        <%=i + 1 + opt.startIndex%>
+    </td>
+    <td  class="td-2 <%=classes['td-2'] %>">
+        <%= _.formatDate(new Date(it[i].date) , 'YYYY-MM-DD hh:mm:ss') %>
+    </td>
+    <td  style="" class="td-3 <%=classes['td-3'] %>">
+        <%= opt.formatMsg(opt.encodeHtml(it[i].msg)) %>
+    </td>
+    <td  class="td-4 <%=classes['td-4'] %>" title="<%=  opt.encodeHtml(it[i].uin == 'NaN' ? '-' : it[i].uin )%>" style="text-overflow: ellipsis;overflow: hidden;" >
+        <%=  opt.encodeHtml(it[i].uin == 'NaN' ? '-' : it[i].uin )%>
+    </td>
+    <td  class="td-5 <%=classes['td-5'] %>">
+        <%=it[i].ip %>
+    </td>
+    <td class="td-6 <%= classes['td-6'] %>" title="<%= it[i].userAgent %>">
+            <%
+            var browserTypes = getBrowserType(it[i].userAgent);
+            for(var x = 0; x < browserTypes.length; x++) {
+             %>
+             <span class="ico-browser <%= browserTypes[x] %>"></span>
+             <%}%>
+     </td>
+    <td class="td-7 <%=classes['td-7'] %>">
+        <a
+            style="word-break:break-all;display:block"
+            href="<%= opt.encodeHtml(_target)%>"
+            target="_blank"
+            data-event-click="showSource"
+            data-event-data="<%=opt.set(it[i])%>"
+        >
+            <%=opt.encodeHtml(_target)%>
+            <span
+                class="err-where"
+                style="height:24px;line-height:24px;border-radius:3px"
+            >
+                <%=opt.encodeHtml(it[i].rowNum || 0)%>行
+                <%=opt.encodeHtml(it[i].colNum || 0)%>列
+            </span>
+        </a>
+        <a
+            class="source_page_link"
+            style="font-size:12px"
+            target="_blank"
+            href="<%=sourcePage(it[i], 'href', opt)%>"
+            data-viewtext="<%=sourcePage(it[i], 'viewtext', opt)%>"
+            data-viewlink="<%=sourcePage(it[i], 'viewlink', opt)%>"
+        ><%=sourcePage(it[i], 'view', opt)%></a>
+    </td>
+</tr>
+<% } %>
+
+<% if(it.length === 0 ){%>
+<td colspan="7" style="
+    text-align: center;
+    background: rgb(221, 221, 221);
+">无更多数据</td>
+<%}%>

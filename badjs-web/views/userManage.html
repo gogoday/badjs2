@@ -1,0 +1,78 @@
+<%=include('./common/commonLinks.html')(it, opt)%>
+<%=include('/common/header.html')(it, opt)%>
+
+<main id="content" role="main">
+    <div class="wrap">
+        <!--<%=include('/common/leftSide.html')(it, opt)%>-->
+        <div class="contentPanel">
+            <div class="searchPanel clearfix">
+               <!-- <label class="search-info">搜索信息</label>
+                <input type="text" class="search-userText" placeholder="姓名（此功能暂时没有用)">-->
+                <label class="search-info">当前项目</label>
+                <select class="search-applyId">
+                    <option value="-1">全部</option>
+                    <%
+                        var items = it.items;
+                        var items_length = items.length;
+                        items.sort(function(x, y) {
+                            return x.id - y.id;
+                        });
+                        for(var i = 0; i < items_length; i++) {
+                            var itemOne = items[i];
+                    %>
+                    <option value="<%=itemOne.id%>">(<%=itemOne.id%>) <%=itemOne.name%></option>
+                    <%}%>
+                </select>
+                <label class="search-info">用户类型</label>
+                <select class="search-userType">
+                        <option value="-1">全部</option>
+                        <option value="1">管理员</option>
+                        <option value="0">普通用户</option>
+                </select>
+                <button type="button" class="btn btn-default searchBtn">搜索</button>
+
+
+            </div>
+
+            <div class="userTable ListTable">
+                <div class="infoPanel">
+                    <span class="info">当前项目：</span>
+                    <span class="info projectName">全部</span>
+                    <div class="operationPanel">
+                        <input class="add-userName" type="text" placeholder="增加的用户名" disabled/>
+                        <button id="add-btn" class="btn-default modifyBtn" disabled>
+                            增加成员
+                        </button>
+                    </div>
+
+                </div>
+                <div class="tableTitle">用户表</div>
+                <div class="tableWrapper table-responsive">
+                    <table class="dataTable table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>用户登录名</th>
+                            <th>用户中文名</th>
+                            <th>所属项目名称</th>
+                            <th>用户项目权限</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="userList">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+<%=include('/common/footer.html')(it)%>
+<script src="/static/entry.userManage.js"></script>
+</body>
+
+</html>

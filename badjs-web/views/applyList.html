@@ -1,0 +1,43 @@
+<%=include('./common/commonLinks.html')(it, opt)%>
+<%=include('./common/header.html')(it, opt)%>
+
+<main id="content" role="main">
+    <div class="wrap">
+        <!--<%=include('./common/leftSide.html')(it, opt)%>-->
+        <div class="contentPanel">
+            <div class="searchPanel clearfix">
+              <!--  <label class="search-info">申请人</label>
+                <input id="apply_searchText" type="text"  placeholder="申请人">-->
+                <!--<label for="">From</label>-->
+                <!--<input type="text" value="" readonly class="datetimepicker fromTime" />-->
+                <!--<label for="">to</label>-->
+                <!--<input type="text" value="" readonly class="datetimepicker toTime" />-->
+                <label class="search-info">状态类型</label>
+                <select id="apply_searchType">
+                    <option value="3">全部</option>
+                    <option value="0">审核中</option>
+                    <option value="1">已通过</option>
+                    <option value="2">已拒绝</option>
+                </select>
+
+                <button type="button" id="apply_searchBtn" class="btn btn-default searchBtn">搜索</button>
+
+            </div>
+            <div class="applyTable ListTable">
+                <div class="tableTitle">申请记录</div>
+                <div class="tableWrapper">
+                    <table  class="dataTable table">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%=include('./common/footer.html')(it)%>
+<script src="/static/entry.applyList.js"></script>
+</body>
+
+</html>

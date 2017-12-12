@@ -1,0 +1,21 @@
+{
+    "dispatcher": {
+        "port": 10000,
+        "address": "127.0.0.1"
+    },
+    "acceptor": {
+        "port": 10001,
+        "address": "127.0.0.1"
+    },
+    "openapi" : {
+        "zmqurl" : "tcp://127.0.0.1:10000",
+        "port": 9500,
+        "syncProjects":{
+            "port" : 9002
+        }
+    },
+    "mq" : {
+        "module" : "axon"
+    }
+
+}

@@ -1,0 +1,87 @@
+<%=include('./common/commonLinks.html')(it, opt)%>
+<%=include('./common/indexHeader.html')(it, opt)%>
+
+
+
+<div style="margin-top:25px;float:left; width:200px;position:fixed; ">
+    <div class="m-r-side r">
+        <ul class="toolar-ul" style="">
+            <li><a class="toolar-list" href="#caption1">1. 申请上报ID</a></li>
+            <li><a class="toolar-list" href="#caption2">2. 页面上报</a></li>
+            <li><a class="toolar-list" href="#caption3">3. Nlog查看日志</a></li>
+            <li><a class="toolar-list" href="#caption4">4. 开启邮件服务、统计pv等</a></li>
+        </ul>
+    </div>
+</div>
+
+<main id="content" role="main" class="index-container" style="margin-left:200px;margin-top:80px;">
+    <div class="wrap">
+        <div class="main autoM">
+
+            <div class="m-mian js_navinfo" id="Mnavinfo-2">
+
+                <div class="m-l-mian l">
+                    <h2 class="m-title" id="caption1">1.申请上报ID</h2>
+                    <p class="ml-mod">每个业务对应唯一ID ，这个ID 是在上报的时候必须指定的 </p>
+                    <h2 class="m-title" id="caption2">2.页面上报</h2>
+                    <div class="ml-mod">
+                        <p>
+                            <b>Step 1.引入badjs脚本</b>
+                        </p>
+                        <p>
+                            项目地址 ：<a href="https://github.com/BetterJS/report" _blank="target"> https://github.com/BetterJS/report</a><br/>
+                            dist 目录下的:<br/>
+                            bj-report.js 最基本的上报组件<br/>
+                            bj-report-tryjs.js 包含基本和高级tryjs的组件(推荐)<br/>
+                            <br/>
+
+                        </p>
+                        <p>
+                            <b>Step 2.申请项目接入</b><br/>
+                            <p> 首先点击右上角进行注册或则登录。</p>
+                            <p> 登录完成后，进入管理控制台，点击导航栏中的“申请接入” ，然后等待管理员的审核。 </p>
+                        </p>
+                        <div>
+                            <p><b>Step 3.页面上报</b></p>
+                            <p> 说明请查看 <a href="https://github.com/BetterJS/report" _blank="target"> github项目</a> 地址readme <br/>
+                            </p>
+                        </div>
+                    </div>
+                    <h2 class="m-title" id="caption3">3.Nlog查看日志</h2>
+                    <p>在badjs系统中设置查询参数，选择对应的业务名称<br/>
+                        <img src='/static/img/log.png' width="100%"  /><br/>
+                        对查询结果进行统计<br/>
+                        图表统计<br/>
+                        <img src='/static/img/charts.png' width="100%" />
+                        日志统计<br/>
+                        <img src='/static/img/statistics.png' width="100%" />
+                    </p>
+                    <h2 class="m-title" id="caption4">4. 开启邮件服务、统计pv等 </h2>
+                    <p> 打开链接查看相关文档： https://github.com/iv-web/track </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="m-mian js_navinfo" id="Mnavinfo-3">
+                <div>
+                    <h2 class="m-title">常见问题FAQ</h2>
+                    <div class="ml-mod">下面列举一些常见问题供各位参考，参考中无法找到解决办法的问题可以访问 <a  target="_blank" href="https://github.com/BetterJS/doc/issues">https://github.com/BetterJS/doc/issues</a></div>
+                    <h2 class="m-title">业务接入问题</h2>
+                    <div class="ml-mod">
+                        <p><b>Q1.Badjs脚本做了什么？</b></p>
+                        <p>将信息上报到Nlog日志系统。同时监听error事件，上报脚本错误。</p>
+                        <p><b>Q2.为什么要申请业务ID？</b></p>
+                        <p>业务ID是为了方便在Nlog系统中做查询筛选，每一条上报记录对应了唯一一个业务。</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>
+
+<%=include('./common/footer.html')(it)%>
+<script src="/static/entry.home.js"></script>
+</body>
+</html>

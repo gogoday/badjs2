@@ -1,0 +1,12 @@
+<header>
+    <%=include('./logo.html')(it, opt)%>
+    <div class="head-user">
+        <% if (it.user) { %>
+        <span class="head-face"><%= it.user.chineseName %>(<%= it.user.loginName %>)</span>
+        <a href="/logout">退出</a>
+        <% } else { %>
+        <a href="/user/login">登录</a>
+        <% } %>
+    </div>
+</header>
+<%=include('./nav.html')(it, opt)%>

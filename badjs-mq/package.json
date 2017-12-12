@@ -1,0 +1,25 @@
+{
+  "name": "badjs-mq",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "log4js": "^0.6.2",
+    "connect": "^2.25.7",
+    "underscore": "^1.8.3",
+    "axon": "^2.0.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miniflycn/badjs-mq.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miniflycn/badjs-mq/issues"
+  },
+  "homepage": "https://github.com/miniflycn/badjs-mq"
+}

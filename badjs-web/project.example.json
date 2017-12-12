@@ -1,0 +1,48 @@
+{
+    "host" : "http://badjs.server.com/",
+    "port": 8081,
+    "mysql" : {
+        "url" : "mysql://root:root@localhost:3306/badjs"
+    },
+    "storage" : {
+        "errorMsgTopUrl" : "http://127.0.0.1:9000/errorMsgTop",
+        "queryUrl" : "http://127.0.0.1:9000/query"
+    },
+    "acceptor": {
+        "pushProjectUrl" : "http://127.0.0.1:9001/getProjects"
+    },
+    "openapi": {
+        "pushProjectUrl" : "http://127.0.0.1:9002/getProjects"
+    },
+    "mq": {
+        "url": "tcp://127.0.0.1:10000",
+        "subscribe": "badjs",
+        "module": "axon"
+    },
+    "email": {
+        "enable": false,
+        "homepage": "http://badjs.com/index.html",
+        "emailSuffix" : "@demo.com",
+        "from": "noreply-badjs@demo.com",
+        "smtp": "smtp.demo.com",
+        "smtpUser": "username",
+        "smtpPassword": "password",
+        "time": "09:00:00",
+        "top": 20,
+        "module": "email"
+    },
+    "plugin": [ 
+        {
+            "name": "feflow",
+            "enable": false,
+            "config": {}
+        },
+        {
+            "name": "oa-login",
+            "enable": false,
+            "config": {}
+        }
+    ],
+    "mailTo": "x@x.com"
+
+}

@@ -1,0 +1,26 @@
+{
+    "port": 8082,
+    "dispatcher": {
+        "port": 10001,
+        "address": "127.0.0.1",
+        "subscribe": "badjs",
+        "module": "./dispatcher/axon"
+    },
+    "offline": {
+        "offlineLogReport": "http://127.0.0.1:9010/offlineLogReport",
+        "offlineLogCheck": "http://127.0.0.1:9010/offlineLogCheck"
+    },
+    "interceptors": [
+        "./filter/validateParam",
+        "./filter/comboPreprocess",
+        "./filter/addExt",
+        "./filter/blackListValidate",
+        "./filter/excludeParam",
+        "./filter/str2Int",
+        "./filter/limitTotal"
+    ],
+    "blackList" :{
+        "ip" : [ "999.9.9.9" , "999.9.*" ,  "999.9.*.*"],
+        "ua": ["Baiduspider" , "*_Security_Team" ]
+    }
+}

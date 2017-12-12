@@ -1,0 +1,34 @@
+{
+  "name": "track",
+  "version": "1.0.0",
+  "description": "track for man",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-highcharts-exporting-v2": "^0.0.9"
+  },
+  "scripts": {
+    "clone": "git clone https://github.com/iv-web/track.git",
+    "install": "npm run install-acceptor && npm run install-mq && npm run install-storage && npm run install-web",
+    "install-acceptor": "cd badjs-acceptor && npm install",
+    "install-mq": "cd badjs-mq && npm install",
+    "install-storage": "cd badjs-storage && npm install",
+    "install-web": "cd badjs-web && npm install",
+    "start": "node ./start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iv-web/badjs.git"
+  },
+  "author": "sampson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miniflycn/badjs-installer/issues"
+  },
+  "homepage": "https://github.com/iv-web/badjs",
+  "keywords": [
+    "badjs"
+  ]
+}
